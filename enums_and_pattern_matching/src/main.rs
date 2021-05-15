@@ -7,6 +7,11 @@ fn main() {
 
     let loopback = IpAddr::V6(IpAddrV6{ address: String::from("::1") });
     loopback.display_ip();
+
+    println!("The value of a penny is {}", value(Coin::Penny));
+    println!("The value of a nickel is {}", value(Coin::Nickel));
+    println!("The value of a dime is {}", value(Coin::Dime));
+    println!("The value of a quarter is {}", value(Coin::Quarter));
 }
 
 
@@ -36,4 +41,20 @@ struct IpAddrV4 {
 
 struct IpAddrV6 {
     address: String,
+}
+
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
+}
+
+fn value(coin: Coin) -> u8 { // match enum and return value dependent on sub type
+    match coin {
+        Coin::Penny => 1,
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter => 25,
+    }
 }
